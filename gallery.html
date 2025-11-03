@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Galeri • Hurma Makinesi</title>
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    /* Video görünümü için basit stil */
+    .gallery-video {
+      margin: 32px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border);
+    }
+
+    .gallery-video video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-image" style="background-image: url('assets/images/kapak.jpg');"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/images/krktkrkmz.png" alt="KRKT Logo" class="brand-logo">
+        <span class="brand-text" data-i18n="brand">Hurma Makinesi</span>
+      </div>
+      <nav class="nav" id="site-nav">
+        <a href="index.html#hero" data-i18n="nav.home">Ana Sayfa</a>
+        <a href="feeding.html" data-i18n="featureFeeding.title">Besleme</a>
+        <a href="vibration.html" data-i18n="featureVibration.title">Vibrasyon</a>
+        <a href="brushing.html" data-i18n="featureBrushing.title">Fırçalama</a>
+        <a href="contact.html" data-i18n="nav.contact">İletişim</a>
+        <a href="hakkımızda.html" data-i18n="nav.hakkımızda">Hakkımızda</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menüyü aç/kapat"><span></span><span></span><span></span></button>
+      <button class="btn tiny lang-btn" id="lang-toggle" aria-label="Dili değiştir">TR</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <h2 data-i18n="gallery.title">Galeri</h2>
+        
+
+  
+
+        <!-- 📸 Fotoğraf galerisi -->
+        <div class="grid gallery-grid">
+          <a href="assets/images/foto-1.jpg" class="gallery-item">
+            <img src="assets/images/foto-1.jpg" alt="Makine fotoğrafı 1" loading="lazy">
+          </a>
+          <a href="assets/images/foto-2.jpg" class="gallery-item">
+            <img src="assets/images/foto-2.jpg" alt="Makine fotoğrafı 2" loading="lazy">
+          </a>
+          <a href="assets/images/foto-3.jpg" class="gallery-item">
+            <img src="assets/images/foto-3.jpg" alt="Makine fotoğrafı 3" loading="lazy">
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> <span data-i18n="brand">Hurma Temizleme Makinesi</span></p>
+      <a href="#top" class="to-top" aria-label="Yukarı dön">↑</a>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="lightbox-close" aria-label="Kapat">×</button>
+    <img class="lightbox-image" alt="Büyük görüntü">
+  </div>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Özellikler • Hurma Makinesi</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="bg-image" style="background-image: url('assets/images/kapak.jpg');"></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="logo">H</span>
+        <span class="brand-text" data-i18n="brand">Hurma Makinesi</span>
+      </div>
+      <nav class="nav" id="site-nav">
+        <a href="index.html#hero" data-i18n="nav.home">Ana Sayfa</a>
+        <a href="feeding.html" data-i18n="featureFeeding.title">Hurma Yükleme Konveyörü</a>
+        <a href="vibration.html" data-i18n="featureVibration.title">Vibrasyon</a>
+        <a href="brushing.html" data-i18n="featureBrushing.title">Fırçalama ve Parlatma</a>
+        <a href="contact.html" data-i18n="nav.contact">İletişim</a>
+        <a href="hakkımızda.html" data-i18n="nav.hakkımızda">Hakkımızda</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menüyü aç/kapat"><span></span><span></span><span></span></button>
+      <button class="btn tiny lang-btn" id="lang-toggle" aria-label="Dili değiştir">TR</button>
+    </div>
+  </header>
+  
+
+  <main>
+    <section class="features" id="features">
+      <div class="container">
+        <h2 data-i18n="features.title">Öne Çıkan Özellikler</h2>
+        <div class="grid features-grid">
+          <article class="card">
+            <div class="card-icon">⚡</div>
+            <h3 data-i18n="features.fast.title">Hızlı ve Verimli</h3>
+            <p data-i18n="features.fast.desc">Yüksek kapasiteyle kısa sürede maksimum temizlik performansı.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🛡️</div>
+            <h3 data-i18n="features.durable.title">Dayanıklı Tasarım</h3>
+            <p data-i18n="features.durable.desc">Paslanmaz çelik gövde ve endüstriyel bileşenlerle uzun ömür.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🧼</div>
+            <h3 data-i18n="features.maintain.title">Kolay Bakım</h3>
+            <p data-i18n="features.maintain.desc">Modüler yapı sayesinde hızlı temizlik ve servis kolaylığı.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> <span data-i18n="brand">Hurma Temizleme Makinesi</span></p>
+      <a href="#top" class="to-top" aria-label="Yukarı dön" data-i18n-attr="aria-label:footer.toTop">↑</a>
+    </div>
+  </footer>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>
+
+

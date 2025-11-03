@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hakkımızda - KRKT Mühendislik</title>
+
+  <link rel="stylesheet" href="./styles.css">
+
+  <style>
+    /* Üst Menü (Header Navigation) */
+    .nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex: 1;
+    }
+    .nav a {
+      color: #e4e9f2;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.2rem;
+      border-radius: 12px;
+      padding: 12px 20px;
+      transition: background 0.25s ease;
+    }
+    .nav a:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+  </style>
+<body>
+
+  <!-- ÜST MENÜ -->
+  <header class="site-header">
+    <div class="container header-inner" style="display:flex;align-items:center;justify-content:space-between;">
+      <div class="brand" style="display:flex;align-items:center;gap:10px;">
+        <img src="assets/images/krktkrkmz.png" alt="KRKT Logo" class="brand-logo" style="height:45px;">
+        <span class="brand-text" style="font-weight:700;font-size:1.3rem;color:#e4e9f2;">KRKT</span>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">Ana Sayfa</a>
+        <a href="contact.html">İletişim</a>
+        <a href="hakkımızda.html">Hakkımızda</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="about" id="about">
+      <div class="container">
+        <h2 data-i18n="about.title">Hakkımızda</h2>
+        <p class="muted" data-i18n="about.subtitle">Biz kimiz ve ne yapıyoruz?</p>
+
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Biz, <strong>KRKT Mühendislik</strong> olarak endüstriyel gıda işleme hatlarında verimlilik, dayanıklılık ve güvenliği ön planda tutan makine çözümleri üretiyoruz.
+              Mühendislik tecrübemizi, sahadan gelen gerçek ihtiyaçlarla birleştirerek hurma işleme, titreşimli ayırma ve taşıma sistemleri gibi özel makineler geliştiriyoruz.
+            </p>
+
+            <p>
+              Tasarımını ve üretimini yaptığımız <strong>Hurma Yükleme Konveyörü</strong> ve <strong>Vibrasyon + Blower Makinesi</strong>, yüksek hijyen standartlarına uygun, tamamen paslanmaz çelik gövdeli yapılarıyla uzun ömürlü kullanım sunar. 
+              Her bir makinemiz, kurulumdan devreye almaya kadar kullanıcı güvenliği ve kolay bakım prensipleriyle tasarlanmıştır.
+            </p>
+
+            <p>
+              Amacımız, gıda üretim tesislerine sadece bir makine değil; daha verimli, daha güvenli ve daha modern bir üretim hattı deneyimi kazandırmaktır. 
+              Sürekli gelişen teknolojiyi takip ediyor, yerli mühendislik gücüyle dünya standartlarında çözümler sunuyoruz.
+            </p>
+
+            <p>
+                KRKT Üretim Hattı
+            </p>
+          </div>
+
+          <div class="about-image">
+            <img src="assets/images/krktkrkmz.png" alt="KRKT Logo" class="brand-logo">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="model-3d" style="padding: 48px 0;">
+      <div class="container" style="text-align:center;">
+        <h2 style="margin-bottom:16px;">3D Model</h2>
+    
+        <!-- 3D MODEL -->
+        <model-viewer
+          src="assets/models/konver.glb"
+          alt="3D Model"
+          camera-controls
+          auto-rotate
+          shadow-intensity="1"
+          exposure="1"
+          style="width:100%; max-width:700px; height:520px; margin:0 auto; display:block; border-radius:12px;">
+        </model-viewer>
+    
+        <!-- Basit not -->
+        <p class="muted" style="margin-top:12px;">Modeli fareyle döndürebilir, yakınlaştırabilirsiniz.</p>
+      </div>
+    </section>
+    
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> <span data-i18n="brand">Hurma Temizleme Makinesi</span></p>
+      <a href="#top" class="to-top" aria-label="Yukarı dön" data-i18n-attr="aria-label:footer.toTop">↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // ▼ Dropdown'ı "kaydırmadan kapanma" sorununa karşı stabilize et
+    (function(){
+      const wrap    = document.getElementById('ht-dropdown');
+      const trigger = wrap.querySelector('.ht-trigger');
+      const panel   = wrap.querySelector('.dd');
+
+      let hideTimer = null;
+
+      function openPanel(){
+        clearTimeout(hideTimer);
+        panel.style.display = 'block';
+      }
+      function scheduleClose(){
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(()=>{ panel.style.display='none'; }, 180); // 180ms tolerans
+      }
+
+      // Masaüstü: hover ile aç/kapa (toleranslı)
+      trigger.addEventListener('mouseenter', openPanel);
+      trigger.addEventListener('mouseleave', scheduleClose);
+      panel  .addEventListener('mouseenter', openPanel);
+      panel  .addEventListener('mouseleave', scheduleClose);
+
+      // Mobil: tıklayınca aç/kapa
+      trigger.addEventListener('click', function(e){
+        if (window.matchMedia('(max-width: 800px)').matches) {
+          e.preventDefault();
+          panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+        }
+      });
+    })();
+    // ▲
+  </script>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>
