@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600">
+  <rect width="960" height="600" fill="#212833"></rect>
+  <g fill="#a7ffc9" opacity=".9">
+    <rect x="180" y="180" width="180" height="180" rx="12"></rect>
+    <rect x="400" y="220" width="160" height="220" rx="12"></rect>
+    <rect x="590" y="180" width="190" height="150" rx="12"></rect>
+  </g>
+  <g stroke="#78e0a7" stroke-width="6" fill="none">
+    <path d="M270 360v70h420"></path>
+    <circle cx="690" cy="430" r="26"></circle>
+  </g>
+  <text x="40" y="72" fill="#dfe8fb" font-size="36" font-family="Inter, Arial" font-weight="700">
+    Özel Makina Tasarımı &amp; İmalatı
+  </text>
+</svg>

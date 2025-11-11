@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600">
+  <rect width="960" height="600" fill="#1e252f"></rect>
+  <g fill="#b3c7ff">
+    <rect x="160" y="380" width="640" height="24" rx="12"></rect>
+    <rect x="300" y="420" width="360" height="16" rx="8" opacity=".6"></rect>
+  </g>
+  <g stroke="#ffc98b" stroke-width="10" fill="none" stroke-linecap="round">
+    <path d="M560 260c40 20 80 20 120 0"></path>
+    <path d="M560 280c40 20 80 20 120 0" opacity=".7"></path>
+  </g>
+  <g fill="#d7e3ff" stroke="#9db1ff" stroke-width="6">
+    <circle cx="340" cy="300" r="70"></circle>
+    <rect x="430" y="240" width="40" height="120" rx="8"></rect>
+  </g>
+  <text x="40" y="72" fill="#dfe8fb" font-size="36" font-family="Inter, Arial" font-weight="700">
+    Talaşlı İmalat
+  </text>
+</svg>

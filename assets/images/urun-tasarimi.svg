@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1">
+      <stop offset="0" stop-color="#1c2230"></stop>
+      <stop offset="1" stop-color="#303a4d"></stop>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="600" fill="url(#g1)"></rect>
+  <g fill="none" stroke="#9fb3d9" stroke-width="4">
+    <circle cx="240" cy="320" r="110"></circle>
+    <circle cx="300" cy="280" r="50"></circle>
+    <circle cx="540" cy="300" r="140"></circle>
+    <path d="M120 420h720M120 460h720M120 500h720" opacity=".35"></path>
+  </g>
+  <g fill="#cfe1ff" opacity=".9">
+    <circle cx="540" cy="300" r="22"></circle>
+    <circle cx="300" cy="280" r="16"></circle>
+    <circle cx="240" cy="320" r="14"></circle>
+  </g>
+  <text x="40" y="72" fill="#dfe8fb" font-size="36" font-family="Inter, Arial" font-weight="700">
+    3B Ürün Tasarımı
+  </text>
+</svg>

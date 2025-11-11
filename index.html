@@ -128,21 +128,184 @@
   </div>
 
   <main>
-    <section class="hero" id="hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <h1>Hurma Temizleme Makinesi</h1>
-          <p>Hijyenik, hızlı ve verimli hurma temizliği için profesyonel çözüm.</p>
-          <p style="font-size: 18px; color: var(--primary); font-weight: 600; margin: 16px 0;">
-            150 kg hurma • 20 dakikada temizlik • 3 aşamalı sistem • Sıfır su kullanımı
-          </p>
-          <div class="hero-cta">
-            <a class="btn primary" href="contact.html">Teklif Al</a>
-            <a class="btn ghost" href="gallery.html">Galeriyi Gör</a>
-          </div>
-        </div>
+    <!-- HİZMET KUTULARI (main içine) -->
+<style>
+  /* Yerel stiller (sadece bu sayfada) */
+  .services-wrap {
+    max-width: 1200px;
+    margin: 48px auto;
+    padding: 0 20px;
+  }
+  .services-head {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 22px;
+    color: #e4e9f2;
+    letter-spacing: .2px;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
+
+  .service-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    will-change: transform;
+    backdrop-filter: blur(2px);
+  }
+  .service-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 14px 34px rgba(0,0,0,.35);
+    border-color: rgba(255,255,255,0.16);
+  }
+
+  .service-media {
+    aspect-ratio: 16/10;
+    background: #111419;
+    overflow: hidden;
+  }
+  .service-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1);
+    transition: transform .35s ease, opacity .35s ease;
+    opacity: .95;
+  }
+  .service-card:hover .service-media img {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+
+  .service-body {
+    padding: 18px 18px 20px;
+    color: #cdd6e3;
+  }
+  .service-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 4px 0 8px;
+    color: #eaf0fb;
+  }
+  .service-text {
+    font-size: .98rem;
+    line-height: 1.55;
+    color: #b9c3d4;
+    min-height: 72px; /* satırlar daha dengeli dursun */
+  }
+  .service-cta {
+    margin-top: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: #6b7c8f;
+    color: #0b0d11;
+    font-weight: 700;
+    border: none;
+    cursor: default; /* yönlendirme yok */
+    user-select: none;
+  }
+</style>
+
+<section class="services-wrap">
+  <h2 class="services-head">Hizmetlerimiz</h2>
+
+  <div class="services-grid">
+    <!-- 1) 3 Boyutlu Ürün Tasarımı -->
+    <article class="service-card">
+      <div class="service-media">
+        <img src="assets/images/urun-tasarimi.svg" alt="3 boyutlu ürün tasarımı görseli">
       </div>
-    </section>
+      <div class="service-body">
+        <h3 class="service-title">3 Boyutlu Ürün Tasarımı</h3>
+        <p class="service-text">
+          Fikirlerinizi üretime uygun 3B modellere dönüştürüyoruz. Ergonomi, tolerans ve montaj odaklı tasarım yaklaşımıyla prototip süresini kısaltıyoruz.
+        </p>
+      </div>
+    </article>
+
+    <!-- 2) Tersine Mühendislik -->
+    <article class="service-card">
+      <div class="service-media">
+        <img src="assets/images/tersine-muhendislik.svg" alt="tersine mühendislik görseli">
+      </div>
+      <div class="service-body">
+        <h3 class="service-title">Tersine Mühendislik</h3>
+        <p class="service-text">
+          Mevcut parçalarınızı tarayıp ölçülendiriyor, dijital ikizini oluşturuyoruz. Uyumlu yedek parça ve revizyon çizimleri hazırlıyoruz.
+        </p>
+        </div>
+    </article>
+
+    <!-- 3) Talaşlı İmalat -->
+    <article class="service-card">
+      <div class="service-media">
+        <img src="assets/images/talasli-imalat.svg" alt="talaşlı imalat görseli">
+      </div>
+      <div class="service-body">
+        <h3 class="service-title">Talaşlı İmalat</h3>
+        <p class="service-text">
+          CNC torna ve freze hatlarımızla kritik toleranslı parçaları hassasiyetle üretiyoruz. Malzeme sertifikaları ve proses izlenebilirliği sağlıyoruz.
+        </p>
+        </div>
+    </article>
+
+    <!-- 4) Özel Makina Tasarımı ve İmalatı -->
+    <article class="service-card">
+      <div class="service-media">
+        <img src="assets/images/ozel-makina-imalat.svg" alt="özel makina tasarımı ve imalatı görseli">
+      </div>
+      <div class="service-body">
+        <h3 class="service-title">Özel Makina Tasarımı ve İmalatı</h3>
+        <p class="service-text">
+          Sürecinize özel makinaları baştan sona tasarlayıp üretiyoruz. Emniyet, ergonomi ve bakım kolaylığı ilkeleriyle devreye alıyoruz.
+        </p>
+        </div>
+    </article>
+
+    <!-- 5) Yedek Parça İmalatı -->
+    <article class="service-card">
+      <div class="service-media">
+        <img src="assets/images/yedek-parca-imalat.svg" alt="yedek parça imalatı görseli">
+      </div>
+      <div class="service-body">
+        <h3 class="service-title">Yedek Parça İmalatı</h3>
+        <p class="service-text">
+          Aşınan/hasarlı parçalarınızı hızlı ve belgeli şekilde yeniliyoruz. Ölçü kontrol raporları ve malzeme sertifikalarıyla teslim ediyoruz.
+        </p>
+        </div>
+    </article>
+
+    <!-- 6) Kaynaklı İmalat -->
+    <article class="service-card">
+      <div class="service-media">
+        <img src="assets/images/kaynakli-imalat.svg" alt="kaynaklı imalat görseli">
+      </div>
+      <div class="service-body">
+        <h3 class="service-title">Kaynaklı İmalat</h3>
+        <p class="service-text">
+          Karbon çelik ve paslanmazda kalite odaklı kaynaklı imalat yapıyoruz. Fikstürleme, NDT kontrolleri ve yüzey işlemleri entegre edilir.
+        </p>
+        </div>
+    </article>
+  </div>
+</section>
+
   </main>
 
   <footer class="site-footer">

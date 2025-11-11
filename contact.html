@@ -47,25 +47,122 @@
     </div>
   </header>
   <main>
-    <section class="contact" id="contact">
-      <div class="container contact-inner">
-        <div class="contact-text">
-          <h2 data-i18n="contact.title">İletişim</h2>
-          <p data-i18n="contact.desc">Makine hakkında bilgi almak veya teklif talep etmek için iletişime geçin.</p>
-          <ul class="contact-list">
-            <li><strong data-i18n="contact.labels.phone">Telefon:</strong> <a href="tel:+90xxxxxxxxxx">+90 xxx xxx xx xx</a></li>
-            <li><strong data-i18n="contact.labels.email">E-posta:</strong> <a href="mailto:ornek@mail.com">ornek@mail.com</a></li>
-            <li><strong data-i18n="contact.labels.address">Adres:</strong> Şehir, İlçe, Türkiye</li>
-          </ul>
+    <!-- İLETİŞİM FORMU (yalnızca <main> içine) -->
+<section class="contact-wrap">
+  <style>
+    .contact-wrap{max-width:1120px;margin:40px auto;padding:0 24px}
+    .contact-title{color:#e4e9f2;font-weight:800;font-size:2rem;letter-spacing:.2px;margin:0 0 8px}
+    .contact-sub{color:#b9c3d4;margin:0 0 28px}
+    .contact-card{
+      margin:auto;max-width:860px;background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px;
+      box-shadow:0 14px 34px rgba(0,0,0,.35)
+    }
+    .contact-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media (max-width:700px){.contact-row{grid-template-columns:1fr}}
+    .field{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+    .field label{color:#cdd6e3;font-weight:700}
+    .input, .textarea{
+      width:100%;color:#eaf0fb;background:#0e1116;border:1px solid rgba(255,255,255,.14);
+      border-radius:12px;padding:14px 16px;font-size:1rem;outline:none;
+      transition:border-color .2s ease, box-shadow .2s ease
+    }
+    .textarea{min-height:180px;resize:vertical}
+    .input:focus, .textarea:focus{border-color:#8fb3ff;box-shadow:0 0 0 3px rgba(143,179,255,.18)}
+    .error{color:#ff6b6b;font-size:.92rem}
+    .btn-send{
+      width:160px;justify-self:center;margin-top:8px;padding:12px 18px;border-radius:12px;border:none;
+      background:#6b7c8f;color:#0b0d11;font-weight:800;cursor:pointer
+    }
+    .note{color:#8a95a7;font-size:.9rem;margin-top:14px;text-align:center}
+    .toast{
+      display:none;margin:16px auto 0;border-radius:12px;padding:12px 16px;
+      background:#122917;color:#b9ffd1;border:1px solid #2da860;max-width:860px
+    }
+    .toast.err{background:#2b1313;color:#ffd9d9;border-color:#b44}
+  </style>
+
+  <h2 class="contact-title">Bize Ulaşın</h2>
+  <p class="contact-sub">Bize mesaj atın! Dönüşleri aynı gün içinde yapmaya çalışıyoruz.</p>
+
+  <div class="contact-card">
+    <form id="iletisimForm" novalidate>
+      <div class="contact-row">
+        <div class="field">
+          <label for="name">Ad</label>
+          <input class="input" id="name" name="name" type="text" placeholder="Ad Soyad" required>
         </div>
-        <div class="contact-card">
-          <h3 data-i18n="contact.quick">Hızlı İletişim</h3>
-          <a class="btn primary block" href="https://wa.me/90xxxxxxxxxx" target="_blank" rel="noopener" data-i18n="contact.buttons.whatsapp">WhatsApp</a>
-          <a class="btn ghost block" href="mailto:ornek@mail.com" data-i18n="contact.buttons.email">E-posta Gönder</a>
-          <a class="btn ghost block" href="tel:+90xxxxxxxxxx" data-i18n="contact.buttons.phone">Telefon Et</a>
+        <div class="field">
+          <label for="email">E-posta*</label>
+          <input class="input" id="email" name="email" type="email" placeholder="ornek@mail.com" required>
+          <span class="error" id="emailErr" style="display:none;">Lütfen geçerli bir e-posta adresi girin.</span>
         </div>
       </div>
-    </section>
+      <div class="field">
+        <label for="message">Mesaj</label>
+        <textarea class="textarea" id="message" name="message" placeholder="Size nasıl yardımcı olabiliriz?" required></textarea>
+      </div>
+
+      <div style="display:grid;place-items:center;">
+        <button class="btn-send" type="submit" aria-label="Gönder" disabled id="sendBtn">Gönder</button>
+      </div>
+      <p class="note">Bu form sayfadan ayrılmadan gönderilir; yönlendirme yok.</p>
+    </form>
+  </div>
+
+  <div id="toastOk" class="toast">Teşekkürler! Mesajın gönderildi. En kısa sürede dönüş yapacağız.</div>
+  <div id="toastErr" class="toast err">Üzgünüz, şu an gönderilemedi. Lütfen biraz sonra tekrar deneyin.</div>
+
+  <script>
+    // --- Basit doğrulama + gönderim ---
+    const f = document.getElementById('iletisimForm');
+    const email = document.getElementById('email');
+    const emailErr = document.getElementById('emailErr');
+    const btn = document.getElementById('sendBtn');
+    const ok = document.getElementById('toastOk');
+    const err = document.getElementById('toastErr');
+
+    // Formspree / Apps Script uç noktası (Aşağıdaki satırı kendi URL'inle değiştir)
+    const ENDPOINT = 'YOUR_ENDPOINT_URL_HERE';
+
+    // e-posta formatı doğruysa butonu aktif et
+    function validateEmail(){
+      const good = email.checkValidity();
+      emailErr.style.display = good ? 'none' : 'block';
+      btn.disabled = !good;
+    }
+    email.addEventListener('input', validateEmail);
+    validateEmail();
+
+    f.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      ok.style.display = 'none'; err.style.display = 'none';
+      btn.disabled = true;
+
+      const data = {
+        name: f.name.value.trim(),
+        email: f.email.value.trim(),
+        message: f.message.value.trim()
+      };
+
+      try {
+        const r = await fetch(ENDPOINT, {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(data)
+        });
+        if (!r.ok) throw new Error('HTTP '+r.status);
+        f.reset(); validateEmail();
+        ok.style.display = 'block';
+      } catch (e2) {
+        err.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  </script>
+</section>
+
   </main>
 
   <footer class="site-footer">

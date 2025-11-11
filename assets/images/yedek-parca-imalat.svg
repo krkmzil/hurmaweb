@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600">
+  <rect width="960" height="600" fill="#1f2531"></rect>
+  <g fill="#cfe1ff" stroke="#9fb3d9" stroke-width="6">
+    <circle cx="280" cy="310" r="90"></circle>
+    <circle cx="280" cy="310" r="22" fill="#9fb3d9"></circle>
+    <rect x="450" y="250" width="220" height="120" rx="16"></rect>
+    <circle cx="720" cy="360" r="36"></circle>
+  </g>
+  <text x="40" y="72" fill="#dfe8fb" font-size="36" font-family="Inter, Arial" font-weight="700">
+    Yedek Parça İmalatı
+  </text>
+</svg>
