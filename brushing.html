@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="tr">
 <head>
+  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hurma Temizleme Hattı</title>
@@ -63,6 +64,41 @@
       color: #2b3d7b;
       margin-bottom: 12px;
     }
+    @media (max-width: 700px) {
+  model-viewer {
+    height: 360px;
+  }
+
+  .tech-table-wrapper {
+    padding: 12px;
+    margin: 30px 10px;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .subbar nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  table.tech-table th,
+  table.tech-table td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
   </style>
 </head>
 <body>
