@@ -7,12 +7,69 @@
   const nav = document.getElementById('site-nav');
   if (navToggle && nav) {
     navToggle.addEventListener('click', function() {
-      nav.classList.toggle('open');
+      const isOpen = nav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      document.body.classList.toggle('nav-open', isOpen);
     });
     // Menüden tıklandığında kapat
     nav.addEventListener('click', function(event) {
       const target = event.target;
-      if (target && target.tagName === 'A') nav.classList.remove('open');
+      if (target && target.tagName === 'A') {
+        nav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
+      }
+    });
+    document.addEventListener('click', function(e) {
+      if (!nav.contains(e.target) && !navToggle.contains(e.target)) {
+        if (nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('nav-open');
+        }
+      }
+    });
+    window.addEventListener('resize', function() {
+      if (window.matchMedia('(min-width: 721px)').matches) {
+        nav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
+      }
+    });
+  }
+
+  // Alt menü dropdown'ları (mobil uyumlu)
+  const dropdowns = document.querySelectorAll('.dropdown');
+  if (dropdowns.length) {
+    const closeAllDropdowns = () => dropdowns.forEach(dd => dd.classList.remove('open'));
+
+    dropdowns.forEach(function(dropdown) {
+      const trigger = dropdown.querySelector('a');
+      if (!trigger) return;
+
+      trigger.addEventListener('click', function(e) {
+        const isTouchLayout = window.matchMedia('(max-width: 900px)').matches || window.matchMedia('(hover: none)').matches;
+        if (!isTouchLayout) return;
+
+        if (!dropdown.classList.contains('open')) {
+          e.preventDefault();
+          closeAllDropdowns();
+          dropdown.classList.add('open');
+        }
+      });
+
+      dropdown.addEventListener('mouseleave', function() {
+        if (window.matchMedia('(min-width: 901px)').matches) {
+          dropdown.classList.remove('open');
+        }
+      });
+    });
+
+    document.addEventListener('click', function(e) {
+      const isDropdownClick = Array.from(dropdowns).some(dd => dd.contains(e.target));
+      if (!isDropdownClick) {
+        closeAllDropdowns();
+      }
     });
   }
 

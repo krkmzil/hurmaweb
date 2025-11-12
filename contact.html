@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="tr">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hakkımızda - KRKT Mühendislik</title>
@@ -9,38 +8,23 @@
   <link rel="stylesheet" href="./styles.css">
 
   <style>
-    /* Üst Menü (Header Navigation) */
-    .nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 40px;
-      flex: 1;
-    }
-    .nav a {
-      color: #e4e9f2;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.2rem;
-      border-radius: 12px;
-      padding: 12px 20px;
-      transition: background 0.25s ease;
-    }
-    .nav a:hover {
-      background: rgba(255, 255, 255, 0.08);
-    }
   </style>
+</head>
 <body>
 
   <!-- ÜST MENÜ -->
   <header class="site-header">
-    <div class="container header-inner" style="display:flex;align-items:center;justify-content:space-between;">
+    <div class="container header-inner">
       <div class="brand" style="display:flex;align-items:center;gap:10px;">
         <img src="assets/images/krktkrkmz.png" alt="KRKT Logo" class="brand-logo" style="height:45px;">
         <span class="brand-text" style="font-weight:700;font-size:1.3rem;color:#e4e9f2;">KRKT</span>
       </div>
-
-      <nav class="nav">
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Menüyü aç/kapat" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav" id="site-nav">
         <a href="index.html">Ana Sayfa</a>
         <a href="contact.html">İletişim</a>
         <a href="hakkımızda.html">Hakkımızda</a>
@@ -176,9 +160,12 @@
   <!-- ▼ Dropdown'ı "kaydırmadan kapanma" sorununa karşı stabilize et -->
   <script>
     (function(){
-      const wrap    = document.getElementById('ht-dropdown');
+      const wrap = document.getElementById('ht-dropdown');
+      if (!wrap) return;
+
       const trigger = wrap.querySelector('.ht-trigger');
       const panel   = wrap.querySelector('.dd');
+      if (!trigger || !panel) return;
 
       let hideTimer = null;
 
